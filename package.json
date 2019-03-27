@@ -1,0 +1,42 @@
+{
+  "name": "ims-api",
+  "version": "1.0.0",
+  "description": "XDEV project",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "ts-node src/main",
+    "prestart:prod": "npm run build",
+    "start:prod": "node dist/main.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "6.0.3",
+    "@nestjs/core": "6.0.3",
+    "@nestjs/mongoose": "^6.0.0",
+    "@nestjs/platform-express": "6.0.3",
+    "mongoose": "^5.4.20",
+    "reflect-metadata": "0.1.13",
+    "rxjs": "6.4.0",
+    "typescript": "3.3.4000"
+  },
+  "devDependencies": {
+    "@types/mongoose": "5.3.24",
+    "@types/node": "7.10.5",
+    "ts-node": "8.0.3",
+    "tslint": "5.14.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
