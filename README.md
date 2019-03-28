@@ -17,3 +17,6 @@ $ npm start
 $ npm start:prod
 ```
 
+# helpful links
+https://codebrains.io/jwt-auth-with-nestjs-passport-and-express/
+
