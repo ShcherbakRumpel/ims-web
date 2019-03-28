@@ -1,12 +1,13 @@
 <h1 style="text-align: center">IMS</h1>
 <h2 style="text-align: center">ims-api</h2>
-Installation
+
+installation:
 
 ```bash
 $ npm install
 ```
 
-running the app
+running the app:
 
 ```bash
 # development
