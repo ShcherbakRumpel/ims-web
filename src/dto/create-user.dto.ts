@@ -1,19 +1,20 @@
-import { ApiModelProperty } from '@nestjs/swagger';
+import * as bcrypt from 'bcrypt';
 
-export class CreateUserDto {
-  @ApiModelProperty()
-  // tslint:disable-next-line:variable-name
-  readonly _id: number;
-
-  @ApiModelProperty()
-  readonly firstName: string;
-
-  @ApiModelProperty()
+export class CreateUserDTO {
   readonly lastName: string;
-
-  @ApiModelProperty()
+  readonly firstName: string;
   readonly email: string;
+  password: string;
+  readonly birthDay: Date;
 
-  @ApiModelProperty()
-  readonly password: string;
+  checkPassword = function(attempt, callback) {
+
+    const user = this;
+
+    bcrypt.compare(attempt, user.password, (err, isMatch) => {
+      if (err) { return callback(err); }
+      callback(null, isMatch);
+    });
+
+  };
 }
