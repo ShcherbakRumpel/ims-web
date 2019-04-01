@@ -22,8 +22,12 @@ export class UsersService {
     return await this.userModel.find().exec();
   }
 
-  async getUserByEmail(email: string): Promise<UserCreate> {
-    return (await this.userModel.find({ email }))[0];
+  async getUserByEmail(emailFromReq: string): Promise<UserCreate> {
+    const result =
+      await this.userModel.findOne({ email: emailFromReq });
+    if (!result) { throw new Error('No user found'); }
+    console.log(result);
+    return result;
   }
   async getHash(password: string | undefined): Promise<string> {
     return bcrypt.hash(password, this.saltRounds);
