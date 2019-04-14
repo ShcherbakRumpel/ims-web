@@ -1,0 +1,41 @@
+User
+{
+  "email": "qweq121@wew.qweq",
+"firstName": "qwe12",
+"lastName": "qwe1212qw",
+"password": "12312311212231",
+"activateDate": "Fri Jun 22 2018 11:02:01 GMT+0530",
+"configurationStep": 1,
+"numberOfFolowers": 1,
+"role": "5cb30afbaa38e50a3ca992d9",
+"countries": ["5ca274c2439b0c0e0833b2e3","5ca273d9439b0c0e0833b2e1"],
+"isCompleteProfileConfiguration":true
+}
+
+Permission
+
+{
+	"name": "Can see all user"
+}
+
+Role
+
+{
+	"name": "Super-Admin",
+	"permissions": [
+		"5cb30a2aaa38e50a3ca992d5",
+		"5cb30a59aa38e50a3ca992d6",
+		"5cb30a62aa38e50a3ca992d7",
+		"5cb30a69aa38e50a3ca992d8"]
+}
+
+Country
+
+{
+    "name": "Russia",
+    "countryCode": "+7",
+    "countryShortName": "RUS"
+}
+
+
+

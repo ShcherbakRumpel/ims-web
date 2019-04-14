@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-mongoose.set('useCreateIndex', true);
 
 export const NicheSchema = new mongoose.Schema({
   name: String,

@@ -10,6 +10,7 @@ export class UsersService {
   constructor(@Inject('USER_MODEL') private readonly userModel: Model<UserCreate>) { }
 
   async create(userDTO: CreateUserDTO) {
+    userDTO.activateDate = new Date(new Date(Date.now()).toISOString());
     const createdUser = new this.userModel(userDTO);
 
     createdUser.password = await this.getHash(createdUser.password);
@@ -26,7 +27,6 @@ export class UsersService {
     const result =
       await this.userModel.findOne({ email: emailFromReq });
     if (!result) { throw new Error('No user found'); }
-    console.log(result);
     return result;
   }
   async getHash(password: string | undefined): Promise<string> {

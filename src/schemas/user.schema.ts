@@ -6,6 +6,19 @@ export const UserSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
+  activateDate: Date,
+  configurationStep: Number,
+  numberOfFolowers: Number,
+  role: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Role',
+  },
+  countries: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Country',
+    },
+  ],
+  isCompleteProfileConfiguration: Boolean,
 });
 UserSchema.plugin(passportLocalMongoose);
 UserSchema.methods.checkPassword = function(attempt, callback) {

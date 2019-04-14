@@ -1,12 +1,20 @@
 import { Module } from '@nestjs/common';
 import { NichesModule } from './niche/niches.module';
 import { UsersModule } from './user/users.module';
-import { AuthService } from './auth/auth.service';
-import { UsersService } from './user/users.service';
 import { AuthModule } from './auth/auth.module';
+import { RoleModule } from './role/role.module';
+import { PermissionModule } from './permission/permission.module';
+import { CountryModule } from './country/country.module';
 
 @Module({
   imports:
-    [NichesModule, UsersModule, AuthModule],
+    [
+      NichesModule,
+      UsersModule,
+      AuthModule,
+      RoleModule,
+      PermissionModule,
+      CountryModule,
+    ],
 })
 export class AppModule { }

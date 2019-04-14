@@ -5,16 +5,10 @@ export class CreateUserDTO {
   readonly firstName: string;
   readonly email: string;
   password: string;
-  readonly birthDay: Date;
-
-  checkPassword = function(attempt, callback) {
-
-    const user = this;
-
-    bcrypt.compare(attempt, user.password, (err, isMatch) => {
-      if (err) { return callback(err); }
-      callback(null, isMatch);
-    });
-
-  };
+  activateDate: Date;
+  configurationStep: number;
+  numberOfFolowers: number;
+  role: string;
+  countries: string[];
+  isCompleteProfileConfiguration: boolean;
 }

@@ -71,9 +71,6 @@ export class AuthService {
 
   // tslint:disable-next-line:only-arrow-functions
   checkPassword(user, attempt, callback) {
-    console.log(user);
-    console.log(attempt);
-    console.log(callback);
 
     bcrypt.compare(attempt, user.password, (err, isMatch) => {
       if (err) { return callback(err); }
