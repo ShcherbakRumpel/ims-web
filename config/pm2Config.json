@@ -1,0 +1,46 @@
+{
+    "apps": [
+      {
+        "name": "ims-api",
+        "script": "src/main.ts",
+        "watch": true,
+        "ignore_watch": [
+          "node_modules",
+          "*.log",
+          ".git",
+          "logs",
+          "public",
+          "services",
+          "utils/clientOnly",
+          "src"
+        ],
+        "node_args": [
+          "--inspect=5858",
+          "--no-deprecation"
+        ],
+        "env": {
+          "NODE_ENV": "development",
+          "CONFIG": "config.dev.json",
+          "APP_NAME": "app"
+        }
+      },
+      {
+        "name": "ims-api-web",
+        "exec_mode": "fork",
+        "instances": "1",
+        "watch": ["services"],
+        "ignore_watch": [
+          "node_modules",
+          "*.log",
+          ".git"
+        ],
+        "env": {
+          "NODE_ENV": "development",
+          "CONFIG": "config.dev.json",
+
+          "APP_NAME": "services"
+        }
+      }
+    ]
+  }
+  

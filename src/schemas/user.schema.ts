@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as passportLocalMongoose from 'passport-local-mongoose';
-import * as bcrypt from 'bcrypt';
+import {UserCreate} from '../interfaces/user.interface';
 export const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
@@ -13,7 +13,7 @@ export const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Role',
   },
-  countries: [{
+  country: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Country',
     },
@@ -21,16 +21,7 @@ export const UserSchema = new mongoose.Schema({
   isCompleteProfileConfiguration: Boolean,
 });
 UserSchema.plugin(passportLocalMongoose);
-UserSchema.methods.checkPassword = function(attempt, callback) {
 
-  const user = this;
-
-  bcrypt.compare(attempt, user.password, (err, isMatch) => {
-    if (err) { return callback(err); }
-    callback(null, isMatch);
-  });
-
-};
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model<UserCreate & mongoose.Document>('User', UserSchema);
 
 module.exports = User;

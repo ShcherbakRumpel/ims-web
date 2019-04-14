@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { CountryInterface } from '../interfaces/country.interface';
 
 export const CountrySchema = new mongoose.Schema({
     name: String,
@@ -6,6 +7,6 @@ export const CountrySchema = new mongoose.Schema({
     countryShortName: String,
 });
 
-const Country = mongoose.model('Country', CountrySchema);
+const Country = mongoose.model<CountryInterface & mongoose.Document>('Country', CountrySchema);
 
 module.exports = Country;

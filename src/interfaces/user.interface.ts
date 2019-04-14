@@ -1,5 +1,8 @@
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { RoleDto } from '../dto/role.dto';
+import { ObjectId } from '../../node_modules/@types/bson';
+import { CountryInterface } from './country.interface';
+import { RoleInterface } from './role.interface';
 
 export interface UserCreate extends Document {
   readonly lastName: string;
@@ -9,7 +12,7 @@ export interface UserCreate extends Document {
   activateDate: Date;
   configurationStep: number;
   numberOfFolowers: number;
-  role: string;
-  countries: any[];
+  role: RoleInterface;
+  country: CountryInterface[];
   isCompleteProfileConfiguration: boolean;
 }

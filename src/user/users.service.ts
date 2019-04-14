@@ -2,8 +2,10 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { CreateUserDTO } from '../dto/create-user.dto';
 import { UserCreate } from '../interfaces/user.interface';
-
+import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { CountrySchema } from '../schemas/coutry.schema';
+import { RoleSchema } from '../schemas/role.scema';
 @Injectable()
 export class UsersService {
   private saltRounds = 10;
@@ -20,7 +22,19 @@ export class UsersService {
     return await createdUser.save();
   }
   async findAll(): Promise<UserCreate[]> {
-    return await this.userModel.find().exec();
+    const Role = mongoose.model('Role', RoleSchema);
+    const Country = mongoose.model('Country', CountrySchema);
+
+    return await this.userModel.find({})
+      .populate({
+        path: 'role',
+        model: Role,
+    })
+      .populate({
+        path: 'country',
+        model: Country,
+      })
+    .exec();
   }
 
   async getUserByEmail(emailFromReq: string): Promise<UserCreate> {

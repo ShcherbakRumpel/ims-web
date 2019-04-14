@@ -9,6 +9,6 @@ export class CreateUserDTO {
   configurationStep: number;
   numberOfFolowers: number;
   role: string;
-  countries: string[];
+  country: string[];
   isCompleteProfileConfiguration: boolean;
 }
